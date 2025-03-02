@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CDN_URL } from '../../../../utils/constants';
 import './RestaurantMenuCard.css';
 
@@ -5,10 +6,11 @@ export default function RestaurantMenuCard({ menuCardDetails }) {
 
     const { name, finalPrice, defaultPrice, price, ratings, description, imageId } = menuCardDetails;
     const { rating, ratingCount, ratingCountV2 } = ratings.aggregatedRating;
+    const [highlightResMenuCard, setHighlightResMenuCard] = useState(false);
 
     return (
         <>
-            <div className='res-menu-card-container'>
+            <div className={`res-menu-card-container ${highlightResMenuCard ? 'menu-add-highlight' : ''}`}>
                 <div>
                     <div className='menu-name'>
                         {name}
@@ -25,10 +27,9 @@ export default function RestaurantMenuCard({ menuCardDetails }) {
                 </div>
                 <div className='image-container'>
                     <img className='menu-image' src={`${CDN_URL}${imageId}`} />
-                    <button className='menu-add'>ADD</button>
+                    <button className='menu-add' onMouseEnter={()=> setHighlightResMenuCard(true)} onMouseLeave={()=> setHighlightResMenuCard(false)} >ADD</button>
                 </div>
             </div>
-            <hr />
         </>
 
     )

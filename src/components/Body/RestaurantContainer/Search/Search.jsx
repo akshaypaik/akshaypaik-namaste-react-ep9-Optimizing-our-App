@@ -11,7 +11,7 @@ export default function Search({ onSearchInputChange }){
 
     return(
         <div className="search">
-            <input type='text' className='search-box' placeholder='Filter...' value={inputString} onChange={(e) => {setInputString(e.target.value), onSearchInputChange(e.target.value)}}/>
+            <input type='text' className='search-box' placeholder='Filter Restaurants...' value={inputString} onChange={(e) => {setInputString(e.target.value), onSearchInputChange(e.target.value)}}/>
         </div>
     )
 }
