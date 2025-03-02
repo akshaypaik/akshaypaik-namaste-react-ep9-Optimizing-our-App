@@ -23,6 +23,12 @@ Currently, two official plugins are available:
     // 7 then a new object is created with this new data. The diff algorithm finds the difference between new 7 resturant object with old 15 resturant object and then updates the actual DOM
 
 
+    # useState core concepts
+    - useState variables are declared like const [name, setName] - useState("akshay");
+    - here akshay is default value for name.
+    - we are doing array destructing as useState will return an array where first arguement is variable and second arguement is a function to update that variable.
+    - whenever this variable changes react will rerender the component checking the changes using diff algorithm where it checks for different in old react object and the new one.
+
     # useEffect core concepts
     // If no dependency array => useEffect is called on every component render 
     // If dependency array is empty = [] => useEffect is called on initial component render(only once)  
