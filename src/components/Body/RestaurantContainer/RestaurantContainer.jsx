@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import restaurantData from "../../../utils/restaurantMockData";
 import Filter from "./Filter/Filter";
 import RestaurantCard from "./RestaurantCard/RestaurantCard";
 import './RestaurantContainer.css';
 import ShimmerUI from "./ShimmerUI/ShimmerUI";
 import Search from "./Search/Search";
-import { SWIGGY_RESTAURANTS } from "../../../utils/apiConstants";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../../../utils/CustomHooks/useRestaurantList";
 
 export default function RestaurantContainer() {
 
@@ -83,35 +82,15 @@ export default function RestaurantContainer() {
     // Super powerful react local state variable
     //Whenever state variable updates React trigger Reconciliation cycle -> React rerenders the component
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
-    const [swiggyBackendRestaurantsSOT, setSwiggyBackendRestaurantsSOT] = useState([]);
     const [removeClearFilterStyle, setRemoveClearFilterStyle] = useState(false);
     const [searchFilterResultCalled, setSearchFilterResultCalled] = useState(false);
 
+    const swiggyBackendRestaurantsSOT = useRestaurantList();
+
     // This will be called once component renders
     useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        const resData = await fetch(`${SWIGGY_RESTAURANTS}`);
-        const resDataJson = await resData.json();
-        const swiggyBackendRestaurants = [];
-        resDataJson?.data?.cards.forEach((card) => {
-            if (card?.card?.card?.gridElements && card?.card?.card?.gridElements?.infoWithStyle && card?.card?.card?.gridElements?.infoWithStyle?.restaurants) {
-                const newRestaurants = card.card.card.gridElements.infoWithStyle.restaurants;
-                newRestaurants.forEach((restaurant) => {
-                    const index = swiggyBackendRestaurants.findIndex((item) => item.info.id === restaurant.info.id);
-                    if (index === -1) {
-                        swiggyBackendRestaurants.push(restaurant);
-                    }
-                });
-            }
-        });
-        console.log("swiggyBackendRestaurants: ", swiggyBackendRestaurants);
-
-        setListOfRestaurants(swiggyBackendRestaurants);
-        setSwiggyBackendRestaurantsSOT(swiggyBackendRestaurants);
-    }
+        setListOfRestaurants(swiggyBackendRestaurantsSOT);
+    }, [swiggyBackendRestaurantsSOT]);
 
     const handleTopRatedFilter = () => {
         // Whenever a state variable updates, React will rerender the component

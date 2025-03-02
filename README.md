@@ -58,6 +58,10 @@ Currently, two official plugins are available:
     - React Lifecycle is explained in Contact.jsx file.
     - How parent and child component lifecycle is triggered and how react behaves behind the scenes.
 
+    # Custom Hooks
+    - They should not be defined as an async function.
+    - Refer => RestaurantMenu.jsx and useRestaurantMenu.js files
+
 
 
 
