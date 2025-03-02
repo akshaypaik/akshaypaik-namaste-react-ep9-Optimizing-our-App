@@ -1,3 +1,7 @@
+.nav-items{
+    margin-left: auto;
+}
+
 .nav-items ul {
     display: flex;
     gap: 60px;

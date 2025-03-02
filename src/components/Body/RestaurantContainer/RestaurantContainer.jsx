@@ -6,6 +6,7 @@ import ShimmerUI from "./ShimmerUI/ShimmerUI";
 import Search from "./Search/Search";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../../../utils/CustomHooks/useRestaurantList";
+import useOnlineStatus from "../../../utils/CustomHooks/useOnlineStatus";
 
 export default function RestaurantContainer() {
 
@@ -86,6 +87,7 @@ export default function RestaurantContainer() {
     const [searchFilterResultCalled, setSearchFilterResultCalled] = useState(false);
 
     const swiggyBackendRestaurantsSOT = useRestaurantList();
+    const onlineStatus = useOnlineStatus();
 
     // This will be called once component renders
     useEffect(() => {
@@ -120,6 +122,12 @@ export default function RestaurantContainer() {
             setListOfRestaurants(swiggyBackendRestaurantsSOT);
             setSearchFilterResultCalled(false);
         }
+    }
+
+    if(!onlineStatus){
+        return <div className="offline-msg">
+            ⚠️Looks like you're offline! Please check your internet connection!🌍
+        </div>
     }
 
     // Conditional Rendering
