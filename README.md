@@ -30,20 +30,33 @@ Currently, two official plugins are available:
     - whenever this variable changes react will rerender the component checking the changes using diff algorithm where it checks for different in old react object and the new one.
 
     # useEffect core concepts
-    // If no dependency array => useEffect is called on every component render 
-    // If dependency array is empty = [] => useEffect is called on initial component render(only once)  
-    // If dependency array is [isLoggedIn] => useEffect is called everytime isLoggedIn is updated
+    - If no dependency array => useEffect is called on every component render 
+    - If dependency array is empty = [] => useEffect is called on initial component render(only once)  
+    - If dependency array is [isLoggedIn] => useEffect is called everytime isLoggedIn is updated
     useEffect(() => {
         console.log("useEffect called");
     }, []);
+    - To clean up things once component is removed from dom. Like for example cleaning up setTimeout() or setInterval()
+    we do something like =>
+    useEffect(() => {
+        const timer = setInterval(() => {
+            console.log("react is op")
+        }, 1000);
+        //clear timer here in this return function of useEffect
+        return () => {
+            clearTimeout(timer);
+        }
+    });
 
 
     # 2 types of routing in web apps
     - Client side routing
-    - Server side routing
+    - Server side routing - we get the html content from server. we send the request to server and fecth the html content.
 
 
     # Class based component refer -> User.jsx file and Contact.jsx file
+    - React Lifecycle is explained in Contact.jsx file.
+    - How parent and child component lifecycle is triggered and how react behaves behind the scenes.
 
 
 

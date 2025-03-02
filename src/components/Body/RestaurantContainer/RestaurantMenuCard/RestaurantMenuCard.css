@@ -89,6 +89,11 @@
     bottom: 0;
 }
 
+.menu-add:hover{
+    background-color: lightgreen;
+    color: white;
+}
+
 .image-container {
     display: flex;
     flex-direction: column;
