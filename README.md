@@ -60,7 +60,12 @@ Currently, two official plugins are available:
 
     # Custom Hooks
     - They should not be defined as an async function.
+    - This is a utility function. The name of custom hook must start with "use". Example -> useRestaurantList()
     - Refer => RestaurantMenu.jsx and useRestaurantMenu.js files
+
+    # Chunking, Code Splitting, Dynamic Bundling, Lazy Loading, On Demand Loading, Dynamic Loading (all are same)
+    - Break down app into smaller logical chunks 
+    - Grocery Component for example
 
 
 

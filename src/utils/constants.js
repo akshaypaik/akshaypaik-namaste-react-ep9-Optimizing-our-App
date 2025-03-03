@@ -5,6 +5,8 @@ export const LOGO_URL = "https://www.logodesign.net/logo/smoking-burger-with-let
 
 export const SHIMMER_UI_IMG_URL = "https://miro.medium.com/v2/resize:fit:680/1*t8ZaGUP8uXuTTsWuiKNdyA.gif";
 
+export const ZEPTO_CDN_URL = "https://cdn.zeptonow.com/production/";
+
 
 // 2 types of export/import
 // 1. default export -> export default Component; (If you use arrow function) OR export default function functionName(){}

@@ -1,6 +1,6 @@
 .res-card {
     border: 1px solid transparent;
-    width: 300px;
+    width: 270px;
     height: 420px;
     margin: 10px;
     background-color: aliceblue;
@@ -22,9 +22,11 @@
 }
 
 .res-logo {
-    width: 100%;
+    width: 270px;
+    height: 180px;
     border-radius: 8px;
     max-height: 200px;
+    object-fit: cover;
 }
 
 .res-desc {
